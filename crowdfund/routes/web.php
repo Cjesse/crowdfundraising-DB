@@ -13,9 +13,15 @@
 Route::group(['middleware' => ['web']], function () {
 	Route::get('/', 'PagesController@getHome');
 
+	Route::get('about', "PagesController@getAbout");
+
 	Route::get('login', "PagesController@getLogin");
 
 	Route::get('signup', "PagesController@getSignup");
 
+	Route::get('create', "PagesController@getCreate");
+
 	Route::resource('user', 'LoginController');
+
+	Route::resource('project', 'ProjectController');
 });
