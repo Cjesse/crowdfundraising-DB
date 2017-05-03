@@ -16,3 +16,5 @@ Route::get('/', 'PagesController@getHome');
 Route::get('login', "PagesController@getLogin");
 
 Route::get('signup', "PagesController@getSignup");
+
+Route::resource('user', 'LoginController');

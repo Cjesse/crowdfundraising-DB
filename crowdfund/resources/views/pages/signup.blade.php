@@ -15,13 +15,21 @@
 		
 			<div class="col-md-4 col-md-offset-4">
 			<h3>Sign up</h3>
-			<br>
+			<hr>
+			<p></p>
 				{{-- <div class="well well-sm"> --}}
-			{!! Form::open(array('url' => 'signup', 'data-parsley-validate' => '')) !!}
+			{!! Form::open(array('route' => 'user.store', 'data-parsley-validate' => '')) !!}
 				<div class="input-group">
 				  <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
 				  {{-- <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1"> --}}
-				  {{ Form::text('text', null, ['class' => 'form-control', 'placeholder' => 'Username', 'required' => '', 'data-parsley-type' => 'email']) }}
+				  {{ Form::text('uname', null, ['class' => 'form-control', 'placeholder' => 'Username', 'required' => '']) }}
+				</div>
+				<p></p>
+
+				<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-envelope"></i></span>
+				  {{-- <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1"> --}}
+				  {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email Address', 'required' => '', 'data-parsley-type' => 'email']) }}
 				</div>
 				<p></p>
 
