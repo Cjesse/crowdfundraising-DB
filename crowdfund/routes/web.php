@@ -10,11 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => ['web']], function () {
+	Route::get('/', 'PagesController@getHome');
 
-Route::get('/', 'PagesController@getHome');
+	Route::get('login', "PagesController@getLogin");
 
-Route::get('login', "PagesController@getLogin");
+	Route::get('signup', "PagesController@getSignup");
 
-Route::get('signup', "PagesController@getSignup");
-
-Route::resource('user', 'LoginController');
+	Route::resource('user', 'LoginController');
+});
