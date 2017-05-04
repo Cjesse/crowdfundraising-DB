@@ -54,7 +54,7 @@ class LoginController extends Controller
         Session::flash('success', 'The user was successfully saved !');
 
         // redirect
-        return redirect()->route('user.show', $user->uid);
+        return redirect()->route('user.show', $user->id);
     }
 
     /**
