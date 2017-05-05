@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use Session;
 
-class LoginController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +23,7 @@ class LoginController extends Controller
      */
     public function create()
     {
-        return view('pages.signup');
+        //
     }
 
     /**
@@ -36,25 +34,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        // validate data
-        $this->validate($request, array(
-            'uname' => 'required|max:255',
-            'email' => 'required',
-            'password' => 'required'
-            ));
-        // store the data
-        $user = new User;
-
-        $user->uname = $request->uname;
-        $user->email = $request->email;
-        $user->password = $request->password;
-
-        $user->save();
-
-        Session::flash('success', 'The user was successfully saved !');
-
-        // redirect
-        return redirect()->route('user.show', $user->uid);
+        //
     }
 
     /**
@@ -65,19 +45,7 @@ class LoginController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        return view('pages.user')->withUser($user);
-    }
-
-    /**
-     * Display the specified resource for other user.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function showOtherUser($id)
-    {
-
+        //
     }
 
     /**
