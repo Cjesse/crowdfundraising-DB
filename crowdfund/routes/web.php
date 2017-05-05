@@ -21,6 +21,8 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::get('create', "PagesController@getCreate");
 
+	Route::get('user/logout', 'LoginController@logOut');
+
 	Route::resource('user', 'LoginController');
 
 	Route::resource('project', 'ProjectController');

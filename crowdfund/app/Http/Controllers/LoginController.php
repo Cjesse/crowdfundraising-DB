@@ -51,8 +51,9 @@ class LoginController extends Controller
 
         $user->save();
 
-        Session::flash('success', 'The user was successfully saved !');
-
+        // storing session via request
+        // $request->session()->put($user->uid, $user->uid);
+        Session::put('uid', $user->uid);
         // redirect
         return redirect()->route('user.show', $user->uid);
     }
@@ -102,6 +103,18 @@ class LoginController extends Controller
     {
         //
     }
+    /**
+     * User Log out.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function logOut(Request $request, $id)
+    {
+
+    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -111,6 +124,10 @@ class LoginController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        // delete this session
+        Session::flush();
+        // redirect to home page
+        return view('pages.home');
     }
 }
