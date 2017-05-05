@@ -28,6 +28,7 @@ class ProjectController extends Controller
     public function create()
     {
         //
+        view('projects.create');
     }
 
     /**
@@ -38,7 +39,40 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate data
+        $this->validate($request, array(
+            'pname' => 'required|max:255',
+            'description' => '',
+            'sample' => '',
+            'category' => 'required',
+            'enddate' => 'required|date',
+            'deadline' => 'required|date|after:enddate',
+            'minfund' => 'required|min:0',
+            'maxfund' => 'required|min:minfund',
+            ));
+
+        //store the data
+        $project = new Project;
+        $project->pname = $request->pname;
+        $project->description = $request->description;
+        $project->sample = $request->sample;
+        $project->category = $request->category;
+        $project->startdate = date('Y-m-d H:i:s');
+        $project->updatetime = date('Y-m-d H:i:s');
+        $project->enddate = $request->enddate . ' 00:00:00';
+        $project->deadline = date('Y-m-d',strtotime($request->deadline)) . ' 00:00:00';
+        $project->minfund = $request->minfund;
+        $project->maxfund = $request->maxfund;
+        $project->currentfund = 0;
+        $project->issuccess = 0;
+        $project->iscomplete = 0;
+        $project->isreleased = 0;
+        $project->save();
+
+
+        //redirect to success page
+        return redirect()->route('project.show',$project->pid);
+
     }
 
     /**
@@ -50,6 +84,8 @@ class ProjectController extends Controller
     public function show($id)
     {
         //
+        $project = Project::find($id);
+        return view('projects.show')->withProject($project);
     }
 
     /**

@@ -13,12 +13,16 @@ class CreateProjectsTable extends Migration
      */
     public function up()
     {
+
+        protected $timestamps = false;
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('pid');
             $table->string('pname', 45);
             $table->string('description', 200)->nullable();
             $table->binary('sample')->nullable();
             $table->string('category', 45);
+            $table->dateTime('startdate');
+            $table->dateTime('updatetime');
             $table->dateTime('enddate');
             $table->dateTime('deadline');
             $table->decimal('minfund', 10, 2);
@@ -27,11 +31,7 @@ class CreateProjectsTable extends Migration
             $table->boolean('issuccess')->default('0');
             $table->boolean('iscomplete')->default('0');
             $table->boolean('isreleased')->default('0');
-            $table->timestamps();
-        });
-        Schema::table('projects', function (Blueprint $table) {
-            $table->renameColumn('created_at', 'startdate');
-            $table->renameColumn('updated_at', 'updatetime');
+
         });
 
     }
