@@ -21,11 +21,14 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
 	Route::post('auth/register', 'Auth\RegisterController@register');
 
-
+	//Pages
 	Route::get('about', 'PagesController@getAbout');
 	Route::get('/', 'PagesController@getIndex');
 
-
+	//Projects
 	Route::get('create', "PagesController@getCreate");
 	Route::resource('project', 'ProjectController');
+
+	//Creditcards
+	Route::resource('creditcard','CreditCardController');
 });
