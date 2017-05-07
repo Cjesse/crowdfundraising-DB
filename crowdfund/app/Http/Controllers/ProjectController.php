@@ -55,6 +55,8 @@ class ProjectController extends Controller
         $project->description = $request->description;
         $project->sample = $request->sample;
         $project->category = $request->category;
+        // $project->startdate = date('Y-m-d H:i:s');
+        // $project->updatetime = date('Y-m-d H:i:s');
         $project->enddate = $request->enddate . ' 00:00:00';
         $project->deadline = date('Y-m-d',strtotime($request->deadline)) . ' 00:00:00';
         $project->minfund = $request->minfund;
