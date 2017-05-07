@@ -2,19 +2,6 @@
 
 @section('title', '| Register')
 
-@section('loginorsignup')
-	<ul class="nav navbar-nav navbar-right">
-        <li>
-          <a href="/auth/login">
-          <span class="glyphicon glyphicon-off" aria-hidden="true">
-          Log-in
-          </span>
-          </a>
-        </li>
-        <li><a href="/auth/register">Register</a></li>
-      </ul>
-@endsection
-
 @section('content')
 	<p></p>
 	<p></p>
