@@ -25,15 +25,5 @@ class PagesController extends Controller {
 		return view('pages.about');
 	}
 
-	/**
-     * To create project page
-     *
-     * @return create project page
-     */
-    public function getCreate()
-    {
-        return view('projects.create');
-    }
-
 
 }

@@ -33,7 +33,6 @@
 				<td>{{ $creditcard->updated_at}}</td>
 {{-- 				<td>
 					<a href="{{route('creditcards.edit',$creditcard->id) }}" class="btn btn-xs btn-primary">change</a>
-
 					<a href="{{route('creditcards.delete',$creditcard->id)}}" class="btn btn-xs btn-danger">delete</a>
  --}}				</td>
 			</tr>

@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Project;
 
 class ProjectController extends Controller
 {
+    // only authenticated user can see the project
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +33,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        // show the form for creating a new project
+        return view('projects.create');
     }
 
     /**
@@ -65,6 +72,7 @@ class ProjectController extends Controller
         $project->issuccess = 0;
         $project->iscomplete = 0;
         $project->isreleased = 0;
+        $project->user_id = Auth::user()->uid;
         $project->save();
         //redirect to success page
         return redirect()->route('project.show', $project->pid);

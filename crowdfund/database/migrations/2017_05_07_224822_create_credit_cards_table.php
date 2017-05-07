@@ -17,10 +17,10 @@ class CreateCreditCardsTable extends Migration
             $table->increments('id');
             $table->string('CCN');
             $table->timestamps();
-            $table->integer('uid')->unsigned();
+            $table->integer('user_uid')->unsigned();
         });
 
-        Schema::table('credit_cards',function($table){
+         Schema::table('credit_cards',function($table){
             $table->foreign('user_uid')->references('uid')->on('users')->onDelete('cascade');
         });
     }
@@ -32,7 +32,7 @@ class CreateCreditCardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropForgeign(['uid']);
+        Schema::dropForgeign(['user_uid']);
         Schema::dropIfExists('credit_cards');
     }
 }

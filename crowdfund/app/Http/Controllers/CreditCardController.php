@@ -1,22 +1,17 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\User;
 use App\CreditCard;
 use Session;
-// use App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Auth;
 
 class CreditCardController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +21,6 @@ class CreditCardController extends Controller
     {   
         return view('creditcards.index');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -38,7 +32,6 @@ class CreditCardController extends Controller
         // $user = Auth::user();
         return view('creditcards.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -51,20 +44,15 @@ class CreditCardController extends Controller
         $this->validate($request, array(
             'CCN' => 'required|max:20',
             ));
-
         //store in DB
         $creditcard = new CreditCard();
-
         $creditcard->CCN = $request->CCN;
         $creditcard->user()->associate(Auth::user());
-
         $creditcard->save();
-
         Session::flash('success', 'CreditCard added');
         //redirect
         return redirect()->route('creditcard.index');
     }
-
     /**
      * Display the specified resource.
      *
@@ -75,7 +63,6 @@ class CreditCardController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -85,9 +72,7 @@ class CreditCardController extends Controller
     public function edit($id)
     {
         //
-
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -99,7 +84,6 @@ class CreditCardController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
