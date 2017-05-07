@@ -1,16 +1,19 @@
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
-    @include('partials._head')
+<head>
+    @include('partials._head') 
+</head>
+
     <body>
     @include('partials._nav')
         <div class="container">
            
-            @yield('content')
+                    @yield('content')
     
-            @yield('nav2')
-            <div class="clearfix" style="margin-bottom: 0;">
-                @include('partials._footer')
-            </div><!-- 清除浮动 -->
+                @yield('nav2')
+
+            @include('partials._footer')
+
         </div> <!--end of container -->
 
         @include('partials._javascript')

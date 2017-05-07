@@ -1,5 +1,7 @@
 @extends('main')
 
+@section('title', '| Show Projects')
+
 @section('content')
 	<div class="row">
 		<div class="col-md-8">
@@ -13,7 +15,7 @@
 			<div class="well">
 				<dl>
 					<dt>Funding from:</dt>
-					<dd>{{$project->startdate}}</dd>
+					<dd>{{$project->created_at}}</dd>
 				</dl>
 				<dl>
 					<dt>Funding ends:</dt>

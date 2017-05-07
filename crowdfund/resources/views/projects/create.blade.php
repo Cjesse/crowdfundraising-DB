@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('name', '| Create Project')
+@section('title', '| Create Project')
 
 @section('stylesheet')
 	{!!	Html::style('css/parsley.css') !!}
@@ -12,7 +12,7 @@
 			<h1>Create New Project</h1>
 			<hr>
 		{!! Form::open(array('route' => 'project.store', 'data-parsley-validate' => '')) !!}
-		{!! csrf_field() !!}
+			{{-- {!! csrf_field() !!} --}}
 			<div class="input-group">
 				{{ Form::label('pname', 'Project Name:') }}
 					{{ Form::text('pname', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
@@ -54,15 +54,6 @@
 			</div>
 				{{ Form::submit('Create Project', array('class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top: 20px')) }}
 		{!! Form::close() !!}
-			{{-- {!! Form::open(array('route' => 'posts.store', 'data-parsley-validate' => '')) !!}
-				{{ Form::label('title', 'Title:') }}
-				{{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
-
-				{{ Form::label('body', 'Blog Body:') }}
-				{{ Form::textarea('body', null, array('class' => 'form-control', 'required' => '')) }}
-
-				{{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top: 20px')) }}
-			{!! Form::close() !!} --}}
 		</div>
 	</div>
 

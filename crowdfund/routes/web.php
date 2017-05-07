@@ -10,20 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::group(['middleware' => ['web']], function () {
-	Route::get('/', 'PagesController@getHome');
+	// Authentication Routes
+	Route::get('auth/login', 'Auth\LoginController@showLoginForm');
+	Route::post('auth/login', 'Auth\LoginController@login');
+	Route::get('auth/logout', 'Auth\LoginController@logout');
 
-	Route::get('about', "PagesController@getAbout");
+	// Registration Routes
+	Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
+	Route::post('auth/register', 'Auth\RegisterController@register');
 
-	Route::get('login', "PagesController@getLogin");
 
-	Route::get('signup', "PagesController@getSignup");
+	Route::get('about', 'PagesController@getAbout');
+	Route::get('/', 'PagesController@getIndex');
+
 
 	Route::get('create', "PagesController@getCreate");
-
-	Route::get('user/logout', 'LoginController@logOut');
-
-	Route::resource('user', 'LoginController');
-
 	Route::resource('project', 'ProjectController');
 });

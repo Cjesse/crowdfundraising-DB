@@ -1,13 +1,16 @@
 @extends('main')
+
+@section('title', '| Homepage')
+
 @section('loginorsignup')
 	<ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="/login">
+          <a href="/auth/login">
           <span class="glyphicon glyphicon-off" aria-hidden="true">
-          Log in</span>
+          Log-in</span>
           </a>
         </li>
-        <li><a href="/signup">Sign up</a></li>
+        <li><a href="/auth/register">Register</a></li>
       </ul>
 @endsection
 
