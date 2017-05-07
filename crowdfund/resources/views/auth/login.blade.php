@@ -11,12 +11,12 @@
 
 	<br>
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-			<h3>Log in</h3>
-			<hr>
-			<p></p>
+		<div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Login</div>
+                <div class="panel-body">
 			{!! Form::open() !!}
-				
+				<div class="col-md-6 col-md-offset-3">
 				{{ Form::label('email', 'Email:') }}
 				<div class="input-group">
 				  <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-envelope"></i></span>
@@ -36,9 +36,12 @@
 				<br>
 				{{ Form::submit('Login', ['class' => 'btn btn-success btn-lg btn-block']) }}
 
-
+			</div>
 			{!! Form::close() !!}
 		</div>
+            </div>
+        </div>
+    </div>
 	</div>
 
 @endsection

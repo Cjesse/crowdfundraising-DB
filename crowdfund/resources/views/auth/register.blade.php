@@ -11,11 +11,12 @@
 
 	<br>
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-			<h3>Register</h3>
-			<hr>
-			<p></p>
+		<div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Register</div>
+                <div class="panel-body">
 			{!! Form::open() !!}
+			<div class="col-md-6 col-md-offset-3">
 				{{ Form::label('uname', "Name:") }}
 				<div class="input-group">
 				  <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
@@ -44,9 +45,12 @@
 				</div>
 					<p></p>
 				{{ Form::submit('Register', ['class' => 'btn btn-primary btn-lg btn-block', 'style' => 'margin-top: 20px']) }}
-
+			</div>
 			{!! Form::close() !!}
 		</div>
+            </div>
+        </div>
+    </div>
 	</div>
 
 @endsection
