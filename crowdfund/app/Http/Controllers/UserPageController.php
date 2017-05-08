@@ -9,6 +9,11 @@ use App\Http\Controllers\Controller;
 
 class UserPageController extends Controller {
 
+	// only authenticated user can see the user index page
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => 'getShow']);
+    }
 	/**
      * Show Personal Homepage for the given user.
      *
@@ -16,6 +21,14 @@ class UserPageController extends Controller {
      */
 	public function getIndex() {
 		return view('user.index');
+	}
+	/**
+     * Show User page for other user.
+     *
+     * @return homepage
+     */
+	public function getShow() {
+
 	}
 
 

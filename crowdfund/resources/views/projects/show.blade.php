@@ -72,7 +72,17 @@
                   <img src="http://placekitten.com/45/45" />
                 </div>
                 <div class="commentText">
-                    <p class="">{{ $comment->user->uname}}: {{ $comment->content }}.</p> <span class="date sub-text">on {{ date('F nS, Y - g:iA', strtotime($comment->created_on)) }}</span>
+                <div class="row">
+                	<div class="col-md-9">
+                
+                    <p class=""><a href="#">{{ $comment->user->uname}}</a>: {{ $comment->content }}.</p> <span class="date sub-text">on {{ date('F nS, Y - g:iA', strtotime($comment->created_on)) }}</span>
+					</div>
+					<div class="col-md-1">
+                    {{ Form::open(['route' => ['comment.destroy', $comment->uid], 'method' => 'DELETE']) }}
+						{{ Form::submit('Delete', ['class' => 'btn btn-xs btn-link', 'style' =>'margin-top: 20px']) }}
+					{{ Form::close() }}
+					</div>
+				</div>
                 </div>
             </li>
       		@endforeach
@@ -86,14 +96,16 @@
                 </div>
             </li>
         </ul>
-        <form class="form-inline" role="form">
-            <div class="form-group">
-                <input class="form-control" type="text" placeholder="Your comments" />
-            </div>
-            <div class="form-group">
-                <button class="btn btn-default">Add</button>
-            </div>
-        </form>
+        <div class="row">
+        {!! Form::open(['route' => ['comment.store', $project->pid, Auth::user()->uid], 'method' => 'POST', 'data-parsley-validate' => '']) !!}
+        <div class="col-md-8">
+                {{ Form::text('content', null, array('class' => 'form-control', 'required' => '', 'placeholder' => 'Your Comments')) }}
+		</div>
+		<div class="col-md-4">
+                {{ Form::submit('Comment', array('class' => 'btn btn-default')) }}
+		</div>
+        {!! Form::close() !!}
+        </div>
     </div>
 </div>
       	

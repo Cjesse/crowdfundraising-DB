@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comment;
+use App\Project;
+use App\User;
+use Session;
 
 class CommentController extends Controller
 {
@@ -32,9 +36,23 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $project_pid, $user_uid)
     {
-        //
+        //validate data
+        $this->validate($request, array(
+            'content' => 'required'
+            ));
+        $project = Project::find($project_pid);
+        $user = User::find($user_uid);
+        //store the data
+        $comment = new Comment;
+        $comment->content = $request->content;
+        $comment->project()->associate($project);
+        $comment->user()->associate($user);
+        $comment->save();
+        //redirect to success page
+        
+        return redirect()->route('project.show', $project);
     }
 
     /**
@@ -79,6 +97,13 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // delete comment
+        $comment = Comment::find($id);
+        $project_pid = $comment->project->pid;
+        $comment->delete();
+
+        Session::flash('success', 'Deleted Comment');
+
+        return redirect()->route('projects.show', $project_pid);
     }
 }
