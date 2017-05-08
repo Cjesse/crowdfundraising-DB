@@ -34,8 +34,8 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('user/index', 'UserPageController@getIndex');
 
 	// comment
-	Route::post('comment/{project_pid}/{user_id}', ['uses' => 'CommentController@store', 'as' => 'comment.store']);
+	Route::post('comment/{project_pid}/{user_uid}', ['uses' => 'CommentController@store', 'as' => 'comment.store']);
 	Route::get('comment/{id}/edit', ['uses' => 'CommentController@edit', 'as' => 'comment.edit']);
 	Route::put('comment/{id}', ['uses' => 'CommentController@update', 'as' => 'comment.update']);
-	Route::delete('comment/{id}', ['uses' => 'CommentController@destroy', 'as' => 'comment.destroy']);
+	Route::delete('comment/{user_uid}/{project_pid}/{created_at}', ['uses' => 'CommentController@destroy', 'as' => 'comment.destroy']);
 });

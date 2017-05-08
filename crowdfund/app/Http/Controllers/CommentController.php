@@ -7,6 +7,7 @@ use App\Comment;
 use App\Project;
 use App\User;
 use Session;
+use DB;
 
 class CommentController extends Controller
 {
@@ -95,15 +96,23 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user_uid, $project_pid, $created_at)
     {
         // delete comment
-        $comment = Comment::find($id);
-        $project_pid = $comment->project->pid;
-        $comment->delete();
+        // $comment = Comment::find([$user_uid, $project_pid, $created_at]);
+        // $comment = Comment::where('user_uid', '=', $user_uid)
+        //         ->where('project_pid', '=', $project_pid)
+        //         ->where('created_at', '=', $created_at)
+        //         ->get();
+        // $projects_pid = $comment->project->pid;
+        // $comment->delete();
+        DB::table('comments')->where('user_uid', '=', $user_uid)
+                ->where('project_pid', '=', $project_pid)
+                ->where('created_at', '=', $created_at)
+                ->delete();
 
         Session::flash('success', 'Deleted Comment');
 
-        return redirect()->route('projects.show', $project_pid);
+        return redirect()->route('project.show', $project_pid);
     }
 }

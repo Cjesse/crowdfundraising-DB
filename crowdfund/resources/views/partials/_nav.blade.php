@@ -37,7 +37,7 @@
       <!--for search bar-->
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="tag or peoject name">
+          <input type="text" class="form-control" placeholder="tag or project name">
         </div>
         <button type="submit" class="btn btn-default">Search</button>
       </form>

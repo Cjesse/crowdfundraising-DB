@@ -75,10 +75,10 @@
                 <div class="row">
                 	<div class="col-md-9">
                 
-                    <p class=""><a href="#">{{ $comment->user->uname}}</a>: {{ $comment->content }}.</p> <span class="date sub-text">on {{ date('F nS, Y - g:iA', strtotime($comment->created_on)) }}</span>
+                    <p class=""><a href="#">{{ $comment->user->uname}}</a>: {{ $comment->content }}.</p> <span class="date sub-text">on {{ date('F nS, Y - g:iA', strtotime($comment->created_at)) }}</span>
 					</div>
 					<div class="col-md-1">
-                    {{ Form::open(['route' => ['comment.destroy', $comment->uid], 'method' => 'DELETE']) }}
+                    {{ Form::open(['route' => ['comment.destroy', $comment->user_uid, $comment->project_pid, $comment->created_at], 'method' => 'DELETE']) }}
 						{{ Form::submit('Delete', ['class' => 'btn btn-xs btn-link', 'style' =>'margin-top: 20px']) }}
 					{{ Form::close() }}
 					</div>
