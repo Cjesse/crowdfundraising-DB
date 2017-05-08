@@ -32,7 +32,10 @@ Route::group(['middleware' => ['web']], function () {
 
 	// user page
 	Route::get('user/index', 'UserPageController@getIndex');
-
+	
+	//like
+	Route::get('project/{project}/like',['uses'=>'LikesController@create','as'=>'like.create']);
+	Route::get('project/{project}/unlike',['uses'=>'LikesController@destroy','as'=>'like.destroy']);
 	// comment
 	Route::post('comment/{project_pid}/{user_uid}', ['uses' => 'CommentController@store', 'as' => 'comment.store']);
 	Route::get('comment/{id}/edit', ['uses' => 'CommentController@edit', 'as' => 'comment.edit']);

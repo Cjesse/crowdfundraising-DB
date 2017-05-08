@@ -27,7 +27,18 @@
 					<div class="col-md-6">
 						<a href="#" class="btn btn-info btn-block">Pledge</a>
 					</div>
+          @if(DB::table('likes')->where('user_uid','=',Auth::user()->uid)->where('project_pid','=',$project->pid)->count() != 1)
+            <div class="col-md-6">
+            <a href="{{ route('like.create',$project->pid)}}" class="btn btn-warning btn-block">Like me</a>
+          </div>
+
+          @else
+          <div class="col-md-6">
+            <a href="{{ route('like.destroy',$project->pid)}}" class="btn btn-warning btn-block">Unlike me</a>
+          </div>
+          @endif
 				</div>
+
 			</div><!--end of well-->
 			<strong>progress</strong>
 			<div class="progress">
