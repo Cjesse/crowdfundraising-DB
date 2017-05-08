@@ -27,12 +27,12 @@ class CreateProjectsTable extends Migration
             $table->boolean('issuccess')->default('0');
             $table->boolean('iscomplete')->default('0');
             $table->boolean('isreleased')->default('0');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_uid')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('projects', function ($table){
-            $table->foreign('user_id')->references('uid')->on('users')->onDelete('cascade');
+            $table->foreign('user_uid')->references('uid')->on('users')->onDelete('cascade');
         });
     }
 

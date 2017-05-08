@@ -29,4 +29,7 @@ Route::group(['middleware' => ['web']], function () {
 
 	// Creditcards
 	Route::resource('creditcard','CreditCardController');
+
+	// user page
+	Route::get('user/index', 'UserPageController@getIndex');
 });

@@ -34,4 +34,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\CreditCard');
     }
+
+    public function project()
+    {
+        return $this->hasMany('App\Project');
+    }
 }

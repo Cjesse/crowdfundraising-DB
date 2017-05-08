@@ -72,7 +72,7 @@ class ProjectController extends Controller
         $project->issuccess = 0;
         $project->iscomplete = 0;
         $project->isreleased = 0;
-        $project->user_id = Auth::user()->uid;
+        $project->user_uid = Auth::user()->uid;
         $project->save();
         //redirect to success page
         return redirect()->route('project.show', $project->pid);
