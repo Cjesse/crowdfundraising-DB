@@ -1,0 +1,33 @@
+@extends('main')
+<?php $username = htmlspecialchars($user->uname); ?>
+@section('title', "| $username")
+
+@section('content')
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                  <h1>About {{ $user->uname }}</h1>
+                  <p class="lead">Here is a description about {{ $user->uname }}...</p>
+                </div>
+            </div>
+        </div> <!-- end of header .row -->
+<h3>His/Her Projects</h3>
+<hr>
+
+		<div class="row">
+			<div class="col-sm-6 col-md-4">
+			@foreach(DB::table('projects')->where('user_uid', '=', $user->uid)->get() as $project)
+				<div class="thumbnail">
+					<img src="{{asset('/images/' . $project->sample)}}" alt=""> <!-- need to be fixed -->
+					<div class="caption">
+						<h3>{{ $project->pname }}</h3>
+						<p>{{ substr(strip_tags($project->description), 0, 70) }}{{ strlen(strip_tags($project->description)) > 70 ? "..." : "" }}</p>
+						<p><a href="{{ route('project.show', $project->pid) }}" class="btn btn-success" role="button">View</a></p>
+					</div>
+				</div>
+			@endforeach	
+			</div>
+		</div>
+
+
+@stop

@@ -27,8 +27,9 @@ class UserPageController extends Controller {
      *
      * @return homepage
      */
-	public function getShow() {
-
+	public function getShow($uid) {
+		$user = User::find($uid);
+		return view('user.show')->withUser($user);
 	}
 
 

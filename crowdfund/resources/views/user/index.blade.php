@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div> <!-- end of header .row -->
-<h3>My Project</h3>
+<h3>My Projects</h3>
 <hr>
 
 		<div class="row">
@@ -29,10 +29,21 @@
 			</div>
 		</div>
 <hr>
-<h3>Recent Liked Project</h3>
+<h3>Recent Posts</h3>
 
 <hr>
 <h3>Recent Comments</h3>
+<div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="http://placekitten.com/45/45" alt="">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">Test comments on Project 1</h4>
+    This project is great...
+  </div>
+</div>
 
 
 @stop

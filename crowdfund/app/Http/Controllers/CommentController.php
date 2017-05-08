@@ -98,14 +98,7 @@ class CommentController extends Controller
      */
     public function destroy($user_uid, $project_pid, $created_at)
     {
-        // delete comment
-        // $comment = Comment::find([$user_uid, $project_pid, $created_at]);
-        // $comment = Comment::where('user_uid', '=', $user_uid)
-        //         ->where('project_pid', '=', $project_pid)
-        //         ->where('created_at', '=', $created_at)
-        //         ->get();
-        // $projects_pid = $comment->project->pid;
-        // $comment->delete();
+        // delete comments
         DB::table('comments')->where('user_uid', '=', $user_uid)
                 ->where('project_pid', '=', $project_pid)
                 ->where('created_at', '=', $created_at)

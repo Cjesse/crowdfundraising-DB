@@ -23,6 +23,6 @@ class Project extends Model
 
     public function like()
     {
-        return $this->hasMany('App\Like');
+    	return $this->hasMany('App\Like');
     }
 }
