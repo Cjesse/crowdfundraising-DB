@@ -13,4 +13,11 @@ class Project extends Model
     {
     	return $this->belongsTo('App\User');
     }
+    /**
+     * Get the comments for the project.
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
 }

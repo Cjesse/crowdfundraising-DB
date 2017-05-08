@@ -18,15 +18,21 @@
 			<div class="col-sm-6 col-md-4">
 			@foreach(Auth::user()->project as $project)
 				<div class="thumbnail">
-					<img src="{{ $project->sample}}" alt="">
+					<img src="{{asset('/images/' . $project->sample)}}" alt=""> <!-- need to be fixed -->
 					<div class="caption">
 						<h3>{{ $project->pname }}</h3>
-						<p>{{ $project->description }}</p>
-						<p><a href="#" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Update</a></p>
+						<p>{{ substr(strip_tags($project->description), 0, 70) }}{{ strlen(strip_tags($project->description)) > 70 ? "..." : "" }}</p>
+						<p><a href="{{ route('project.show', $project->pid) }}" class="btn btn-success" role="button">View</a> <a href="{{ route('project.update', $project->pid) }}" class="btn btn-info" role="button">Update</a></p>
 					</div>
 				</div>
 			@endforeach	
 			</div>
 		</div>
+<hr>
+<h3>Recent Liked Project</h3>
+
+<hr>
+<h3>Recent Comments</h3>
+
 
 @stop

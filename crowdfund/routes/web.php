@@ -32,4 +32,7 @@ Route::group(['middleware' => ['web']], function () {
 
 	// user page
 	Route::get('user/index', 'UserPageController@getIndex');
+
+	// comment
+	Route::resource('comment', 'CommentController');
 });
