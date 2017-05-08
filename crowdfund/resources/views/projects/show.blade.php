@@ -25,7 +25,8 @@
 				<hr>
 				<div class="row">
 					<div class="col-md-6">
-						<a href="#" class="btn btn-default btn-block glyphicon glyphicon-usd">Pledge</a>
+						<a href="{{ route('pledge.mycreate',$project->pid)}}" class="btn btn-default btn-block glyphicon glyphicon-usd">Pledge</a>
+
 					</div>
 
           @if(DB::table('likes')->where('user_uid','=', Auth::user()->uid)->where('project_pid','=', $project->pid)->count() != 1)
