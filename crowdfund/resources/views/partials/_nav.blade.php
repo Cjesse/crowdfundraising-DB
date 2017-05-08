@@ -18,7 +18,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="{{ Request::is('project/create') ? "active" : "" }}"><a href="project/create">Start a project <span class="sr-only">(current)</span></a></li>
+        <li class="{{ Request::is('project/create') ? "active" : "" }}"><a href="/project/create">Start a project <span class="sr-only">(current)</span></a></li>
         <li class="{{ Request::is('about') ? "active" : "" }}"><a href="/about">About us</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>

@@ -32,15 +32,19 @@ Route::group(['middleware' => ['web']], function () {
 
 	// user page
 	Route::get('user/index', 'UserPageController@getIndex');
-	Route::get('user/{uid}', 'UserPageController@getShow');
+	Route::get('user/{uid}', ['uses' => 'UserPageController@getShow', 'as' => 'user.show']);
 
 	//like
-	Route::get('project/{project}/like',['uses'=>'LikesController@create','as'=>'like.create']);
-	Route::get('project/{project}/unlike',['uses'=>'LikesController@destroy','as'=>'like.destroy']);
+	Route::get('project/{project}/like',['uses'=>'LikesController@create', 'as' => 'like.create']);
+	Route::get('project/{project}/unlike',['uses'=>'LikesController@destroy', 'as' => 'like.destroy']);
 
 	// comment
 	Route::post('comment/{project_pid}/{user_uid}', ['uses' => 'CommentController@store', 'as' => 'comment.store']);
 	Route::get('comment/{id}/edit', ['uses' => 'CommentController@edit', 'as' => 'comment.edit']);
 	Route::put('comment/{id}', ['uses' => 'CommentController@update', 'as' => 'comment.update']);
 	Route::delete('comment/{user_uid}/{project_pid}/{created_at}', ['uses' => 'CommentController@destroy', 'as' => 'comment.destroy']);
+
+	// follow
+	Route::get('follow/{user_uid}/follow', ['uses' => 'FollowController@store', 'as' => 'follow.store']);
+	Route::delete('follow/{user_uid}/unfollow', ['uses' => 'FollowController@destroy', 'as' => 'follow.destroy']);
 });

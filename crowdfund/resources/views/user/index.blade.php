@@ -28,8 +28,18 @@
 			@endforeach	
 			</div>
 		</div>
-<hr>
 <h3>Recent Posts</h3>
+
+<hr>
+<h3>People You Followed</h3>
+
+
+<div class="list-group">
+@foreach(DB::table('follows')->where('follower', '=', Auth::user()->uid)->get() as $followee)
+  <button type="button" class="list-group-item">{{ DB::table('users')->where('uid', '=', $followee->followee)->select('uname')->get() }}</button>
+@endforeach
+</div>
+
 
 <hr>
 <h3>Recent Comments</h3>

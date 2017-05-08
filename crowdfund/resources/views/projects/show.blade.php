@@ -25,16 +25,17 @@
 				<hr>
 				<div class="row">
 					<div class="col-md-6">
-						<a href="#" class="btn btn-info btn-block">Pledge</a>
+						<a href="#" class="btn btn-default btn-block glyphicon glyphicon-usd">Pledge</a>
 					</div>
 
-          @if(DB::table('likes')->where('user_uid','=',Auth::user()->uid)->where('project_pid','=',$project->pid)->count() != 1)
+          @if(DB::table('likes')->where('user_uid','=', Auth::user()->uid)->where('project_pid','=', $project->pid)->count() != 1)
               <div class="col-md-6">
-                <a href="{{ route('like.create',$project->pid)}}" class="btn btn-warning btn-block">Like me</a>
+              <a href="{{ route('like.create', $project->pid)}}" class="btn btn-default btn-block glyphicon glyphicon-heart-empty"> Like me</a>
+                
               </div>
           @else
             <div class="col-md-6">
-              <a href="{{ route('like.destroy',$project->pid)}}" class="btn btn-warning btn-block">Unlike me</a>
+              <a href="{{ route('like.destroy', $project->pid)}}" class="btn btn-default btn-block glyphicon glyphicon-heart"> Unlike me</a>
             </div>
           @endif
 
@@ -86,12 +87,12 @@
                 <div class="row">
                 	<div class="col-md-9">
                 
-                    <p class=""><a href="/user/{{ $comment->user->uid }}">{{ $comment->user->uname}}</a>: {{ $comment->content }}.</p> <span class="date sub-text">on {{ date('F nS, Y - g:iA', strtotime($comment->created_at)) }}</span>
+                    <p class=""><a href="{{ $comment->user->uid == Auth::user()->uid ? "/user/index" : "/user/". $comment->user->uid }}">{{ $comment->user->uname}}</a>: {{ $comment->content }}.</p> <span class="date sub-text">on {{ date('F nS, Y - g:iA', strtotime($comment->created_at)) }}</span>
 					</div>
 					<div class="col-md-1">
                     {{ Form::open(['route' => ['comment.destroy', $comment->user_uid, $comment->project_pid, $comment->created_at], 'method' => 'DELETE']) }}
-						{{ Form::submit('Delete', ['class' => 'btn btn-xs btn-link', 'style' =>'margin-top: 20px']) }}
-					{{ Form::close() }}
+						          {{ Form::submit('Delete', ['class' => 'btn btn-xs btn-link', 'style' =>'margin-top: 20px']) }}
+					         {{ Form::close() }}
 					</div>
 				</div>
                 </div>

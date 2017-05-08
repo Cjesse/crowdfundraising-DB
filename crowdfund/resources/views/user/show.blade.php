@@ -8,6 +8,17 @@
                 <div class="jumbotron">
                   <h1>About {{ $user->uname }}</h1>
                   <p class="lead">Here is a description about {{ $user->uname }}...</p>
+                   @if(DB::table('follows')->where('follower','=', Auth::user()->uid)->where('followee','=', $user->uid)->count() != 1)
+              		<div class="col-md-6">
+                		<a href="{{ route('follow.store', $user->uid)}}" class="btn btn-warning btn-block">Follow</a>
+              		</div>
+          			@else
+            		<div class="col-md-6">
+            		 {{ Form::open(['route' => ['follow.destroy', $user->uid], 'method' => 'DELETE']) }}
+						{{ Form::submit('Unfollow', ['class' => 'btn btn-warning btn-block']) }}
+					{{ Form::close() }}
+            		</div>
+          			@endif
                 </div>
             </div>
         </div> <!-- end of header .row -->
