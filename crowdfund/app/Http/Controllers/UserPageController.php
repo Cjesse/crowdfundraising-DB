@@ -31,6 +31,14 @@ class UserPageController extends Controller {
 		$user = User::find($uid);
 		return view('user.show')->withUser($user);
 	}
+    /**
+     * Show User profile for other user.
+     *
+     * @return homepage
+     */
+    public function getProfile() {
+        return view('user.profile');
+    }
 
 
 }

@@ -32,6 +32,7 @@ Route::group(['middleware' => ['web']], function () {
 
 	// user page
 	Route::get('user/index', 'UserPageController@getIndex');
+	Route::get('user/pro', 'UserPageController@getProfile');
 	Route::get('user/{uid}', ['uses' => 'UserPageController@getShow', 'as' => 'user.show']);
 
 	//like
