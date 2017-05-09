@@ -8,11 +8,13 @@
       <h1>{{ $project->pname }}</h1>
       <p class="lead"> {{ $project->description }}</p>
 
-      <a href="{{route('user.show',$project->user_uid)}}" class="label label-primary">{{ DB::table('projects')->join('users', 'users.uid', '=', 'projects.user_uid')->select('users.uname')->take(1)->get() }}'s project</a>
+      <a href="{{route('user.show',$project->user_uid)}}" class="label label-primary">{{ $project->user->uname }}'s project</a>
       
       <a href="#" class="label label-warning">Belongs to {{ $project->category }}</a>
       
-      <p><a href="#" class="label label-info">tags</a></p>
+      <p>@foreach ($project->tag as $tag)
+                <a href="{{route('tag.show',$tag->id)}}" class="label label-info">{{ $tag->content }}</a>
+              @endforeach</p>
 
 
 

@@ -37,6 +37,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $tags = Tag::all();
         // show the form for creating a new project
         return view('projects.create')->withTags($tags);
     }
@@ -78,6 +79,12 @@ class ProjectController extends Controller
         $project->isreleased = 0;
         $project->user_uid = Auth::user()->uid;
         $project->save();
+
+        $project->tag()->sync($request->tags, false);
+
+        Session::flash('success', 'The project was successfully save!');
+
+
         //redirect to success page
         return redirect()->route('project.show', $project->pid);
     }

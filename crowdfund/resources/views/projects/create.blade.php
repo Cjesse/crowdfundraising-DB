@@ -30,8 +30,8 @@
 			</div>
 
 			<div class="input-group">
-				{{ Form::label('description', 'Project Body:') }}
-					{{ Form::textarea('description', null, array('class' => 'form-control', 'required' => '')) }}
+				{{ Form::label('description', 'Project description:') }}
+					{{ Form::textarea('description', null, array('class' => 'form-control')) }}
 			</div>
 
 			<div class="input-group">
@@ -81,4 +81,10 @@
 
 @section('script')
 	{!! Html::script('js/parsley.min.js') !!}
+	{!! Html::script('js/select2.min.js') !!}
+
+	<script type="text/javascript">
+		$('.select2-multi').select2();
+	</script>
+
 @endsection
