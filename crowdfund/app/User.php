@@ -56,10 +56,4 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Follow');
     }
-
-    
-    public function pledge()
-    {
-        return $this->hasMany('App\Pledge');
-    }
 }

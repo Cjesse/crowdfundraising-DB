@@ -25,8 +25,7 @@
 				<hr>
 				<div class="row">
 					<div class="col-md-6">
-						<a href="{{ route('pledge.mycreate',$project->pid)}}" class="btn btn-default btn-block glyphicon glyphicon-usd">Pledge</a>
-
+						<a href="#" class="btn btn-default btn-block glyphicon glyphicon-usd">Pledge</a>
 					</div>
 
           @if(DB::table('likes')->where('user_uid','=', Auth::user()->uid)->where('project_pid','=', $project->pid)->count() != 1)
@@ -115,7 +114,7 @@
                 {{ Form::text('content', null, array('class' => 'form-control', 'required' => '', 'placeholder' => 'Your Comments')) }}
 		</div>
 		<div class="col-md-4">
-                {{ Form::submit('Comment', array('class' => 'btn btn-default')) }}
+                {{ Form::submit('Comment', array('class' => 'btn btn-default glyphicon glyphicon-comment')) }}
 		</div>
         {!! Form::close() !!}
         </div>

@@ -8,6 +8,7 @@ use App\Project;
 use App\User;
 use Session;
 use DB;
+use Purifier;
 
 class CommentController extends Controller
 {

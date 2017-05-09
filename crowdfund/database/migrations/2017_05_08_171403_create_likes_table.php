@@ -27,7 +27,6 @@ class CreateLikesTable extends Migration
      */
     public function down()
     {
-        Schema::dropForeign(['user_id', 'project_pid']);
         Schema::dropIfExists('likes');
     }
 }

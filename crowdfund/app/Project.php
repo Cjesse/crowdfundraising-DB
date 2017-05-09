@@ -25,9 +25,4 @@ class Project extends Model
     {
     	return $this->hasMany('App\Like');
     }
-
-    public function pledge()
-    {
-        return $this->hasMany('App\pledge');
-    }
 }
