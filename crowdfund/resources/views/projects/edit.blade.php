@@ -66,10 +66,8 @@
 	{!! Html::script('js/select2.min.js') !!}
 {{-- 
 	<script type="text/javascript">
-
 		$('.select2-multi').select2();
 		$('.select2-multi').select2().val({!! json_encode($project->tag()->getRelatedIds()) !!}).trigger('change');
-
 	</script> --}}
 
 @endsection

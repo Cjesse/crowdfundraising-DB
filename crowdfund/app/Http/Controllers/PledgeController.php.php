@@ -1,14 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Pledge;
 use App\Project;
 use Session;
 use App\User;
-
 class PledgeController extends Controller
 {
     // only authenticated user can see the project
@@ -27,7 +24,6 @@ class PledgeController extends Controller
         $pledges = Auth::user()->pledge();
         return view('pledges.index')->withPledge($pledges);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -44,7 +40,6 @@ class PledgeController extends Controller
         }
         return view('pledges.mycreate')->withProject($project)->with('CCNs',$numbers);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -61,24 +56,18 @@ class PledgeController extends Controller
         //store to DB
         $pledge = new Pledge;
         $project = Project::find($request->pid);
-
         $pledge->amount = $request->amount;
         $pledge->CCN = $request->CCN;
         $pledge->charged = 0;
-
         $pledge->user()->associate(Auth::user());
         $pledge->project()->associate($project);
-
         $pledge->save();
-
         $project->currentfund += $request->amount;
         $project->save();
         //redirect
         Session::flash('success','You have pledged the project!');
         return redirect()->route('project.show',$project->pid);
-
     }
-
     /**
      * Display the specified resource.
      *
@@ -89,7 +78,6 @@ class PledgeController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -100,7 +88,6 @@ class PledgeController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -112,7 +99,6 @@ class PledgeController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

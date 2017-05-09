@@ -7,9 +7,8 @@
     <body>
     @include('partials._nav')
         <div class="container">
-
            
-                @yield('content')
+                    @yield('content')
     
                 @yield('nav2')
 

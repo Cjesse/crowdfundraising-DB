@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateProjectTagTable extends Migration
 {
-    /**
+     /**
      * Run the migrations.
      *
      * @return void
@@ -17,13 +17,10 @@ class CreateProjectTagTable extends Migration
             $table->increments('id');
             $table->integer('project_pid')->unsigned();
             $table->foreign('project_pid')->references('pid')->on('projects');
-
             $table->integer('tag_id')->unsigned();
             $table->foreign('tag_id')->references('id')->on('tags');
         });
-
     }
-
     /**
      * Reverse the migrations.
      *

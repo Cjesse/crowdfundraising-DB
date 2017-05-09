@@ -3,7 +3,7 @@
 @section('title', '| Show Projects')
 
 @section('content')
-  <div class="row">
+	 <div class="row">
     <div class="col-md-8">
       <h1>{{ $project->pname }}</h1>
       <p class="lead"> {{ $project->description }}</p>
@@ -49,7 +49,7 @@
             </div>
           @endif
 
-        </div>
+				</div>
       </div><!--end of well-->
       <strong>progress</strong>
       <div class="progress">
@@ -63,17 +63,17 @@
 
 @section('nav2')
 
-  <!--bootstrap nav tabs -->
-  <ul class="nav nav-tabs">
-      <li class="active"><a data-toggle="tab" href="#home">Comments</a></li>
-      <li><a data-toggle="tab" href="#menu1">Updates</a></li>
-      <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-      <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
-    </ul>
-  <!--bootstrap nav tabs -->
+	<!--bootstrap nav tabs -->
+	<ul class="nav nav-tabs">
+    	<li class="active"><a data-toggle="tab" href="#home">Comments</a></li>
+    	<li><a data-toggle="tab" href="#menu1">Updates</a></li>
+    	<li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+    	<li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+  	</ul>
+	<!--bootstrap nav tabs -->
 
-  <div class="tab-content">
-      <div id="home" class="tab-pane fade in active">
+	<div class="tab-content">
+    	<div id="home" class="tab-pane fade in active">
 
 <div class="detailBox">
     <div class="actionBox">
@@ -95,7 +95,7 @@
                 </div>
                 <div class="commentText">
                 <div class="row">
-                  <div class="col-md-9">
+              <div class="col-md-9">
                 
                     <p class=""><a href="{{ $comment->user->uid == Auth::user()->uid ? "/user/index" : "/user/". $comment->user->uid }}">{{ $comment->user->uname}}</a>: {{ $comment->content }}.</p> <span class="date sub-text">on {{ date('F nS, Y - g:iA', strtotime($comment->created_at)) }}</span>
           </div>

@@ -54,6 +54,5 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('pledge/project/{pid}',['uses'=>'PledgeController@mycreate','as'=>'pledge.mycreate']);
 
 	//tag
-	Route::resource('tag','TagController',['except'=>'create`']);
-
+	Route::resource('tag','TagController',['except'=>'create']);
 });

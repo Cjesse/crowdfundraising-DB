@@ -20,7 +20,6 @@ class CreatePledgesTable extends Migration
             $table->float('amount',10,2)->unsigned();
             $table->string('CCN');
             $table->tinyInteger('charged');
-
             $table->timestamps();
         });
 
@@ -28,7 +27,6 @@ class CreatePledgesTable extends Migration
             $table->foreign('user_uid')->references('uid')->on('users')->onDelete('cascade');
             $table->foreign('project_pid')->references('pid')->on('projects')->onDelete('cascade');
         });
-
     }
 
     /**
