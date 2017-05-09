@@ -4,6 +4,17 @@
 
 @section('stylesheet')
 	{!!	Html::style('css/parsley.css') !!}
+	{!! Html::style('css/select2.min.css') !!}
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+
+	<script>
+		tinymce.init({
+			selector: 'textarea',
+			plugins: 'link code',
+			menubar: false
+		});
+	</script>
+
 @endsection
 
 @section('content')
@@ -24,13 +35,22 @@
 			</div>
 
 			<div class="input-group">
+				{{ Form::label('tags', 'Tags:') }}
+				<select class="form-control select2-multi" name="tags[]" multiple="multiple">
+					@foreach($tags as $tag)
+						<option value='{{ $tag->id }}'>{{ $tag->content }}</option>
+					@endforeach
+				</select>
+			</div>
+			
+			<div class="input-group">
 				{{ Form::label('sample','Sample material:') }}
 					{{ Form::file('sample',null,array('class' => 'form-control','style' =>'margin-top: 20px')) }}
 			</div>
 
 			<div class="input-group">
 				{{ Form::label('category','Category') }}
-					{{ Form::select('category',['M' => 'Music', 'A' => 'Art', 'F' => 'Film', 'L' => 'Literature'],null,array('class' => 'form-control','style' =>'margin-top: 20px')) }}
+					{{ Form::select('category',['Music' => 'Music', 'Art' => 'Art', 'Film' => 'Film', 'Literature' => 'Literature'],null,array('class' => 'form-control','style' =>'margin-top: 20px')) }}
 			</div>
 
 			<div class="input-group">

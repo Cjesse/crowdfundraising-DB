@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Project;
+use App\Tag;
+use Session;
+use Image;
 use Purifier;
 
 class ProjectController extends Controller
@@ -22,7 +25,7 @@ class ProjectController extends Controller
     public function index()
     {
         // create a variable and store all the projects info in it from the database
-        $projects = Project::all();
+        $projects = Project::all()->paginate(3);
         // return a view and pass in the above variable
         return view('projects.index')->withProject($projects);
     }
@@ -35,7 +38,7 @@ class ProjectController extends Controller
     public function create()
     {
         // show the form for creating a new project
-        return view('projects.create');
+        return view('projects.create')->withTags($tags);
     }
 
     /**
@@ -100,7 +103,15 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::find($id);
+
+        $tags = Tag::all();
+        $tags2 = array();
+        foreach ($tags as $tag) {
+            $tags2[$tag->id] = $tag->name;
+        }
+
+        return view('projects.edit')->withProject($project)->withTags($tags2);
     }
 
     /**
@@ -112,7 +123,21 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $project = Project::find($id);
+
+        $project->description = Purifier::clean($request->input('description'));
+        $project->save();
+
+        if (isset($request->tags)) {
+            $project->tags()->sync($request->tags);
+        } else {
+            $project->tags()->sync(array());
+        }
+
+        Session::flash('success', 'This project was successfully saved.');
+       
+       return redirect()->route('project.show',$project->pid);
+
     }
 
     /**

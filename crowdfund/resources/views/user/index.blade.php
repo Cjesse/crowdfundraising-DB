@@ -23,7 +23,7 @@
 					<div class="caption">
 						<h3>{{ $project->pname }}</h3>
 						<p>{{ substr(strip_tags($project->description), 0, 70) }}{{ strlen(strip_tags($project->description)) > 70 ? "..." : "" }}</p>
-						<p><a href="{{ route('project.show', $project->pid) }}" class="btn btn-success" role="button">View</a> <a href="{{ route('project.update', $project->pid) }}" class="btn btn-info" role="button">Update</a></p>
+						<p><a href="{{ route('project.show', $project->pid) }}" class="btn btn-success" role="button">View</a> <a href="{{ route('project.edit', $project->pid) }}" class="btn btn-info" role="button">Update</a></p>
 					</div>
 				</div>
       </div>
