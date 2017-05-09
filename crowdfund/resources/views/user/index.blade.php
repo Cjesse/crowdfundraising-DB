@@ -48,7 +48,7 @@
             <div class="panel-body">
                 <ul class="list-group">
                 @foreach(DB::table('follows')->where('follower', '=', Auth::user()->uid)->get() as $followee)
-                  @foreach(DB::table('comments')->where('user_uid', '=', $followee->followee)->get() as $comment)
+                  @foreach(DB::table('comments')->where('user_uid', '=', $followee->followee)->orderBy('created_at', 'desc')->get() as $comment)
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-2 col-md-1">
@@ -71,7 +71,7 @@
                     @endforeach
                 @endforeach
                 @foreach(DB::table('follows')->where('follower', '=', Auth::user()->uid)->get() as $followee)
-                  @foreach(DB::table('likes')->where('user_uid', '=', $followee->followee)->get() as $like)
+                  @foreach(DB::table('likes')->where('user_uid', '=', $followee->followee)->orderBy('created_at', 'desc')->get() as $like)
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-2 col-md-1">
@@ -90,6 +90,26 @@
                     </li>
                     @endforeach
                 @endforeach
+                @foreach(DB::table('follows')->where('follower', '=', Auth::user()->uid)->get() as $followee)
+                  @foreach(DB::table('pledges')->where('user_uid', '=', $followee->followee)->orderBy('created_at', 'desc')->get() as $pledge)
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-2 col-md-1">
+                                <img src="https://images-na.ssl-images-amazon.com/images/I/518hmCtPngL._SX258_BO1,204,203,200_.jpg" class="img-circle img-responsive" alt="" /></div>
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    <a href="{{ route('project.show', $pledge->project_pid) }}">{{ DB::table('projects')->where('pid', '=', $pledge->project_pid)->value('pname') }}</a>
+                                    <div class="mic-info">
+                                        Pledged By: <a href="/user/{{ $followee->followee }}">{{ DB::table('users')->where('uid', '=', $followee->followee)->value('uname') }}</a> on {{ $pledge->created_at }}
+                                    </div>
+                                </div>
+                                <div class="action">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    @endforeach
+                @endforeach
                 </ul>
                 <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
             </div>
@@ -99,7 +119,7 @@
 
 
 <hr>
-<h3>Recent Pledges</h3>
+<h3>Recent Funded</h3>
 @foreach(DB::table('pledges')->where('user_uid', '=', Auth::user()->uid)->get() as $pledge)
 <div class="media">
   <div class="media-left">

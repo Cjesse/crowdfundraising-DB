@@ -40,7 +40,7 @@
 
           @if(DB::table('likes')->where('user_uid','=', Auth::user()->uid)->where('project_pid','=', $project->pid)->count() != 1)
               <div class="col-md-6">
-              <a href="{{ route('like.create', $project->pid)}}" class="btn btn-default btn-block glyphicon glyphicon-heart-empty"> Like me</a>
+              <a href="{{ route('like.create', $project->pid)}}" class="btn btn-default btn-block glyphicon glyphicon-heart-empty">Like me</a>
                 
               </div>
           @else
@@ -95,15 +95,17 @@
                 </div>
                 <div class="commentText">
                 <div class="row">
-              <div class="col-md-9">
+              <div class="col-md-10">
                 
                     <p class=""><a href="{{ $comment->user->uid == Auth::user()->uid ? "/user/index" : "/user/". $comment->user->uid }}">{{ $comment->user->uname}}</a>: {{ $comment->content }}.</p> <span class="date sub-text">on {{ date('F nS, Y - g:iA', strtotime($comment->created_at)) }}</span>
-          </div>
-          <div class="col-md-1">
+                </div>
+           @if(Auth::user()->uid == $comment->user->uid)
+              <div class="col-md-1">
                     {{ Form::open(['route' => ['comment.destroy', $comment->user_uid, $comment->project_pid, $comment->created_at], 'method' => 'DELETE']) }}
                       {{ Form::submit('Delete', ['class' => 'btn btn-xs btn-link', 'style' =>'margin-top: 20px']) }}
                    {{ Form::close() }}
-          </div>
+              </div>
+          @endif
         </div>
                 </div>
             </li>

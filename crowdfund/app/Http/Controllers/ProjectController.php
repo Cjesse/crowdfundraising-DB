@@ -14,6 +14,7 @@ class ProjectController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,10 +22,12 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        Session::flash('success', 'The project was successfully searched!');
+        $search = \Request::get('search');
         // create a variable and store all the projects info in it from the database
-        $projects = Project::all()->paginate(3);
+        $projects = Project::where('pname', 'like', '%'.$search.'%')->orWhere('category', 'like', '%'.$search.'%')->paginate(3);
         // return a view and pass in the above variable
-        return view('projects.index')->withProject($projects);
+        return view('projects.index', compact('projects'));
     }
     /**
      * Show the form for creating a new resource.

@@ -34,15 +34,15 @@
         </li>
       </ul>
 
-      <!--for search bar-->
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="tag or project name">
-        </div>
-        <button type="submit" class="btn btn-default">Search</button>
-      </form>
-      <!--end of search bar-->
       
+<!--for search bar-->
+{!! Form::open(['method'=>'GET','url'=>'project','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
+    <input type="text" class="form-control" name="search" placeholder="Search...">
+        <button class="btn btn-default-sm" type="submit">
+            <i class="fa fa-search">Search</i>
+        </button>
+{!! Form::close() !!}
+<!--end of search bar-->
     <ul class="nav navbar-nav navbar-right">
       @if (Auth::check())
           <li class="dropdown">

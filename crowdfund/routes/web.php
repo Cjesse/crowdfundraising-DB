@@ -25,6 +25,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('about', 'PagesController@getAbout');
 	Route::get('/', 'PagesController@getIndex');
 	// projects
+	// Route::post('project/index', ['uses' => 'ProjectController@getIndex', 'as' => 'project.getIndex']);
 	Route::resource('project', 'ProjectController');
 
 	// Creditcards
