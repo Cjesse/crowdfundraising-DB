@@ -28,10 +28,16 @@ class Project extends Model
 
     public function pledge()
     {
-        return $this->hasMany('App\pledge');
+        return $this->hasMany('App\Pledge');
     }
     public function tag()
     {
         return $this->belongsToMany('App\Tag');
     }
+
+    public function rate()
+    {
+        return $this->hasMany('App\Rate');
+    }
+
 }

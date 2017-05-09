@@ -63,6 +63,10 @@ class PledgeController extends Controller
         $pledge->project()->associate($project);
         $pledge->save();
         $project->currentfund += $request->amount;
+        if($project->currentfund>=$project->minfund){
+            $project->issuccess = 1;
+        }
+        
         $project->save();
         //redirect
         Session::flash('success','You have pledged the project!');

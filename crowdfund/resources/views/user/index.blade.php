@@ -14,22 +14,22 @@
 <h3>My Projects</h3>
 <hr>
 
-		<div class="row">
-			
-			@foreach(Auth::user()->project as $project)
+        <div class="row">
+            
+            @foreach(Auth::user()->project as $project)
       <div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<img src="https://prpop.org/wp-content/uploads/2016/01/humberto-ramirez-2016-bohemia-jazz-e1454100881603.jpg{{-- {{asset('/images/' . $project->sample)}} --}}" alt=""> <!-- need to be fixed -->
-					<div class="caption">
-						<h3>{{ $project->pname }}</h3>
-						<p>{{ substr(strip_tags($project->description), 0, 70) }}{{ strlen(strip_tags($project->description)) > 70 ? "..." : "" }}</p>
-						<p><a href="{{ route('project.show', $project->pid) }}" class="btn btn-success" role="button">View</a> <a href="{{ route('project.edit', $project->pid) }}" class="btn btn-info" role="button">Update</a></p>
-					</div>
-				</div>
+                <div class="thumbnail">
+                    <img src="https://prpop.org/wp-content/uploads/2016/01/humberto-ramirez-2016-bohemia-jazz-e1454100881603.jpg{{-- {{asset('/images/' . $project->sample)}} --}}" alt=""> <!-- need to be fixed -->
+                    <div class="caption">
+                        <h3>{{ $project->pname }}</h3>
+                        <p>{{ substr(strip_tags($project->description), 0, 70) }}{{ strlen(strip_tags($project->description)) > 70 ? "..." : "" }}</p>
+                        <p><a href="{{ route('project.show', $project->pid) }}" class="btn btn-success" role="button">View</a> <a href="{{ route('project.edit', $project->pid) }}" class="btn btn-info" role="button">Update</a></p>
+                    </div>
+                </div>
       </div>
-			@endforeach	
-			
-		</div>
+            @endforeach 
+            
+        </div>
 <h3>Recent Posts</h3>
 
 <hr>

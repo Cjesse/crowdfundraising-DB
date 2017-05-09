@@ -34,7 +34,6 @@
         </li>
       </ul>
 
-      
 <!--for search bar-->
 {!! Form::open(['method'=>'GET','url'=>'project','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
     <input type="text" class="form-control" name="search" placeholder="Search...">
@@ -42,7 +41,8 @@
             <i class="fa fa-search">Search</i>
         </button>
 {!! Form::close() !!}
-<!--end of search bar-->
+<!--end of search bar-->      
+
     <ul class="nav navbar-nav navbar-right">
       @if (Auth::check())
           <li class="dropdown">

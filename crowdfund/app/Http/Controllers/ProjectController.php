@@ -7,6 +7,7 @@ use App\Tag;
 use Session;
 use Image;
 use Purifier;
+
 class ProjectController extends Controller
 {
     // only authenticated user can see the project
@@ -62,7 +63,7 @@ class ProjectController extends Controller
         //store the data
         $project = new Project;
         $project->pname = $request->pname;
-        $project->description = $request->description;
+        $project->description = Purifier::clean($request->description);
         $project->sample = $request->sample;
         $project->category = $request->category;
         // $project->startdate = date('Y-m-d H:i:s');
@@ -106,7 +107,7 @@ class ProjectController extends Controller
         $tags = Tag::all();
         $tags2 = array();
         foreach ($tags as $tag) {
-            $tags2[$tag->id] = $tag->name;
+            $tags2[$tag->id] = $tag->content;
         }
         return view('projects.edit')->withProject($project)->withTags($tags2);
     }
@@ -120,12 +121,14 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         $project = Project::find($id);
-        $project->description = Purifier::clean($request->input('description'));
+        // $project->description = Purifier::clean($request->input('description'));
+        $project->pname = $request->pname;
+        $project->description = Purifier::clean($request->description);
         $project->save();
         if (isset($request->tags)) {
-            $project->tags()->sync($request->tags);
+            $project->tag()->sync($request->tags);
         } else {
-            $project->tags()->sync(array());
+            $project->tag()->sync(array());
         }
         Session::flash('success', 'This project was successfully saved.');
        

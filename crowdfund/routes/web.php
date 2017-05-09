@@ -56,4 +56,9 @@ Route::group(['middleware' => ['web']], function () {
 
 	//tag
 	Route::resource('tag','TagController',['except'=>'create']);
+
+	//rate
+	Route::resource('rate','RateController',['except' => 'create']);
+	Route::get('rate/project/{pid}',['uses'=>'RateController@mycreate','as'=>'rate.mycreate']);
+
 });
