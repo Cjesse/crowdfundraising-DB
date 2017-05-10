@@ -20,7 +20,7 @@
       <ul class="nav navbar-nav">
         <li class="{{ Request::is('project/create') ? "active" : "" }}"><a href="/project/create">Start a project <span class="sr-only">(current)</span></a></li>
         <li class="{{ Request::is('about') ? "active" : "" }}"><a href="/about">About us</a></li>
-        <li class="dropdown">
+ {{--        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Music</a></li>
@@ -32,7 +32,7 @@
             <li><a href="#">Fashion</a></li>
           </ul>
         </li>
-      </ul>
+  --}}     </ul>
 
       
 <!--for search bar-->

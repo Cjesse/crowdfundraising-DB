@@ -5,12 +5,42 @@
 @section('content')
         <div class="row">
             <div class="col-md-12">
-                <div class="jumbotron">
-                  <h1>Recommended to You</h1>
-                  <p class="lead">Here are the recommedations based on your interests...</p>
-                </div>
+                <h3>Recommended to You</h3>
+                <p class="lead">Here are the recommedations based on your interests...</p>
+                  @if(session()->exists('show'))
+                  <h4>Recent browse</h4>
+                  <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="http://localhost:8000/project/{{ session('show')->pid }}/image" alt=""> <!-- need to be fixed -->
+                        <div class="caption">
+                            <h3>{{ session('show')->pname }}</h3>
+                            <p>{{ substr(strip_tags(session('show')->description), 0, 70) }}{{ strlen(strip_tags(session('show')->description)) > 70 ? "..." : "" }}</p>
+                            <p><a href="{{ route('project.show', session('show')->pid) }}" class="btn btn-success" role="button">View</a></p>
+                        </div>
+                    </div>
+                  </div>
+                  @endif
+
+                
+                @if(session()->exists('tag'))
+                <h4>According to your Interested Tags...</h4>
+                @foreach(session('tag')->project as $project)
+                  <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="http://localhost:8000/project/{{ $project->pid }}/image" alt=""> <!-- need to be fixed -->
+                        <div class="caption">
+                            <h3>{{ $project->pname }}</h3>
+                            <p>{{ substr(strip_tags($project->description), 0, 70) }}{{ strlen(strip_tags($project->description)) > 70 ? "..." : "" }}</p>
+                            <p><a href="{{ route('project.show', $project->pid) }}" class="btn btn-success" role="button">View</a></p>
+                        </div>
+                    </div>
+                  </div>
+                  @endforeach
+                  @endif
+
             </div>
         </div> <!-- end of header .row -->
+        <hr>
 <h3>My Projects</h3>
 <hr>
 

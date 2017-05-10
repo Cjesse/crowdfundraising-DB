@@ -52,6 +52,7 @@ class TagController extends Controller
     public function show($id)
     {
         $tag = Tag::find($id);
+        session(['tag'=>$tag]);
         return view('tags.show')->withTag($tag);
     }
     /**

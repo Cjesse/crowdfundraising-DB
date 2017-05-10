@@ -96,6 +96,7 @@ class ProjectController extends Controller
     {
         //
         $project = Project::find($id);
+        session(['show'=>$project]);
         return view('projects.show')->withProject($project);
     }
     /**
