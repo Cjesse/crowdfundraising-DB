@@ -1,11 +1,5 @@
 <?php
-<<<<<<< Updated upstream
-
 namespace App\Http\Controllers;
-
-=======
-namespace App\Http\Controllers;
->>>>>>> Stashed changes
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Pledge;
@@ -13,10 +7,6 @@ use App\Project;
 use Session;
 use App\User;
 use App\Rate;
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 class RateController extends Controller
 {
     public function __construct()
@@ -33,10 +23,6 @@ class RateController extends Controller
         $rates = Auth::user()->rate();
         return view('rates.index')->withRate($pledges);
     }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     /**
      * Show the form for creating a new resource.
      *
@@ -46,10 +32,6 @@ class RateController extends Controller
     {
         
     }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     public function mycreate($pid)
     {
         $project = Project::find($pid);
@@ -67,15 +49,8 @@ class RateController extends Controller
         }else{
             $averating = $sum/$count;
         }
-<<<<<<< Updated upstream
-
         return view('rates.mycreate')->withProject($project)->withAverating($averating);
     }
-
-=======
-        return view('rates.mycreate')->withProject($project)->withAverating($averating);
-    }
->>>>>>> Stashed changes
     /**
      * Store a newly created resource in storage.
      *
@@ -89,19 +64,6 @@ class RateController extends Controller
             ));
         $rate = new Rate;
         $rate->level = (int)($request->level);
-<<<<<<< Updated upstream
-
-        $project = Project::find($request->pid);
-        $rate->project()->associate($project);
-        $rate->user()->associate(Auth::user());
-
-        $rate->save();
-
-        Session::flash('success','You have rated the project!');
-        return redirect()->route('project.show',$project->pid);
-    }
-
-=======
         $project = Project::find($request->pid);
         $rate->project()->associate($project);
         $rate->user()->associate(Auth::user());
@@ -109,7 +71,6 @@ class RateController extends Controller
         Session::flash('success','You have rated the project!');
         return redirect()->route('project.show',$project->pid);
     }
->>>>>>> Stashed changes
     /**
      * Display the specified resource.
      *
@@ -120,10 +81,6 @@ class RateController extends Controller
     {
         //
     }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     /**
      * Show the form for editing the specified resource.
      *
@@ -134,10 +91,6 @@ class RateController extends Controller
     {
         //
     }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     /**
      * Update the specified resource in storage.
      *
@@ -149,10 +102,6 @@ class RateController extends Controller
     {
         //
     }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     /**
      * Remove the specified resource from storage.
      *
@@ -163,8 +112,4 @@ class RateController extends Controller
     {
         //
     }
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes

@@ -230,11 +230,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
-<<<<<<< Updated upstream
-        'Purifier'  => Mews\Purifier\Facades\Purifier::class
-=======
         'Purifier'  => Mews\Purifier\Facades\Purifier::class,
->>>>>>> Stashed changes
 
     ],
 

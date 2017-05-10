@@ -61,8 +61,6 @@ Route::group(['middleware' => ['web']], function () {
 	Route::resource('rate','RateController',['except' => 'create']);
 	Route::get('rate/project/{pid}',['uses'=>'RateController@mycreate','as'=>'rate.mycreate']);
 
-<<<<<<< Updated upstream
-=======
 	//img
 	Route::get('project/{pid}/image', function($pid)
 	{
@@ -75,5 +73,4 @@ Route::group(['middleware' => ['web']], function () {
 	});
 	// return response()->make($projects->sample, 200, array('Content-Type' => (new finfo(FILEINFO_MIME))->buffer($projects->sample)));
 	// });
->>>>>>> Stashed changes
 });

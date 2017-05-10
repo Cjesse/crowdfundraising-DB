@@ -67,8 +67,4 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Rate');
     }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 }

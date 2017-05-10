@@ -13,11 +13,7 @@
 		{!! Form::open(array('route' => 'pledge.store', 'data-parsley-validate' => '')) !!}
 			<div class="input-group">
 				{{ Form::label('pid', 'Project id') }}
-<<<<<<< Updated upstream
-					{{ Form::text('pid', $project->pid, array('class' => 'form-control', 'required' => '','id'=>'disabledInput')) }}
-=======
 					{{ Form::text('pid', $project->pid, array('class' => 'form-control', 'required' => '')) }}
->>>>>>> Stashed changes
 			</div>
 
 			<div class="input-group">

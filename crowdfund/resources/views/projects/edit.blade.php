@@ -4,7 +4,6 @@
 
 @section('stylesheets')
 
-
 	{!! Html::style('css/select2.min.css') !!}
 
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
@@ -29,11 +28,7 @@
 			{{ Form::label('tags', 'Tags:', ['class' => 'form-spacing-top']) }}
 			{{ Form::select('tags[]', $tags, null, ['class' => 'form-control select2-multi', 'multiple' => 'multiple']) }}
 			
-<<<<<<< Updated upstream
-			{{ Form::label('description', "Descripton:", ['class' => 'form-spacing-top']) }}
-=======
 			{{ Form::label('description', "Description:", ['class' => 'form-spacing-top']) }}
->>>>>>> Stashed changes
 			{{ Form::textarea('description', null, ['class' => 'form-control']) }}
 		</div>
 
@@ -51,17 +46,14 @@
 				<hr>
 				<div class="row">
 					<div class="col-sm-6">
-<<<<<<< Updated upstream
-						{{-- {!! Html::linkRoute('/user/index', 'Cancel', array('class' => 'btn btn-danger btn-block')) !!} --}}
-=======
 						{{-- {!! Html::linkRoute('project.show', 'Cancel', array($project->pid), array('class' => 'btn btn-danger btn-block')) !!} --}}
->>>>>>> Stashed changes
 						<a href="/user/index" class="btn btn-danger btn-block">Cancel</a>
 					</div>
 					<div class="col-sm-6">
 						{{ Form::submit('Save Changes', ['class' => 'btn btn-success btn-block']) }}
 					</div>
 				</div>
+
 			</div>
 		</div>
 		{!! Form::close() !!}
@@ -73,19 +65,14 @@
 @section('script')
 
 	{!! Html::script('js/select2.min.js') !!}
-<<<<<<< Updated upstream
-
-
-=======
 	<script type="text/javascript">
 		$('.select2-multi').select2();
 		$('.select2-multi').select2().val({!! ($project->tag()->pluck('content')) !!}).trigger('change');
 	</script>
 {{-- 
->>>>>>> Stashed changes
 	<script type="text/javascript">
 		$('.select2-multi').select2();
-		$('.select2-multi').select2().val({!! ($project->tag()->pluck('content')) !!}).trigger('change');
-	</script>
+		$('.select2-multi').select2().val({!! json_encode($project->tag()->getRelatedIds()) !!}).trigger('change');
+	</script> --}}
 
 @endsection

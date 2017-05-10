@@ -9,7 +9,6 @@ use App\Tag;
 use Session;
 use Image;
 use Purifier;
-
 class ProjectController extends Controller
 {
     // only authenticated user can see the project
@@ -66,15 +65,11 @@ class ProjectController extends Controller
         $project = new Project;
         $project->pname = $request->pname;
         $project->description = Purifier::clean($request->description);
-<<<<<<< Updated upstream
-        $project->sample = $request->sample;
-=======
         $file = Input::file('sample')->getRealPath();
         $img = Image::make($file);
         Response::make($img->encode('jpeg'));
         // $project->sample = $request->sample;
         $project->sample = $img;
->>>>>>> Stashed changes
         $project->category = $request->category;
         $project->enddate = $request->enddate . ' 00:00:00';
         $project->deadline = date('Y-m-d',strtotime($request->deadline)) . ' 00:00:00';
@@ -129,11 +124,7 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         $project = Project::find($id);
-<<<<<<< Updated upstream
-        // $project->description = Purifier::clean($request->input('description'));
-=======
        // $project->description = Purifier::clean($request->input('description'));
->>>>>>> Stashed changes
         $project->pname = $request->pname;
         $project->description = Purifier::clean($request->description);
         $project->save();
