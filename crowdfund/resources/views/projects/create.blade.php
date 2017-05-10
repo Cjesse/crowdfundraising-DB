@@ -22,7 +22,7 @@
 		<div class="col-md-8 col-md-offset-2">
 			<h1>Create New Project</h1>
 			<hr>
-		{!! Form::open(array('route' => 'project.store', 'data-parsley-validate' => '')) !!}
+		{!! Form::open(array('route' => 'project.store', 'files' => true, 'enctype'=>'multipart/form-data', 'data-parsley-validate' => '')) !!}
 			{{-- {!! csrf_field() !!} --}}
 			<div class="input-group">
 				{{ Form::label('pname', 'Project Name:') }}
@@ -45,7 +45,7 @@
 			
 			<div class="input-group">
 				{{ Form::label('sample','Sample material:') }}
-					{{ Form::file('sample',null,array('class' => 'form-control','style' =>'margin-top: 20px')) }}
+					{{ Form::file('sample',null,array('class' => 'form-control', 'style' =>'margin-top: 20px')) }}
 			</div>
 
 			<div class="input-group">

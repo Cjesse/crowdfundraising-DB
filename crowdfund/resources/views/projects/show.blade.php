@@ -14,6 +14,10 @@
       @if($project->isreleased)
       <span class="label label-success">Rating:{{DB::table('rates')->where('project_pid',$project->pid)->avg('level')}}</span>
       @endif
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
       <p>@foreach ($project->tag as $tag)
                 <a href="{{route('tag.show',$tag->id)}}" class="label label-info">{{ $tag->content }}</a>
               @endforeach</p>
@@ -53,6 +57,10 @@
           <a href="{{ route('rate.mycreate',$project->pid)}}" class="btn btn-warning">Rate</a>
         </div>
         @endif
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         <div class="row">
           <div class="col-md-6">
             @if((!$project->iscomplete) && $project->maxfund>=$project->currentfund)
@@ -66,6 +74,10 @@
               <a href="#" class="btn btn-default btn-block glyphicon glyphicon-usd">Funding Ends</a>
               @endif
             @endif
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
           </div>
 
           @if(DB::table('likes')->where('user_uid','=', Auth::user()->uid)->where('project_pid','=', $project->pid)->count() != 1)
@@ -83,8 +95,13 @@
       </div><!--end of well-->
       @if($project->maxfund>$project->currentfund)
       <strong>progress</strong>
+      @if($project->maxfund>$project->currentfund)
       <div class="progress">
+<<<<<<< Updated upstream
         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ $project->currentfund }}" aria-valuemin="0" aria-valuemax="{{$project->maxfund}}" style="width: {{$project->currentfund/($project->maxfund)*100}}%;">
+=======
+         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ $project->currentfund }}" aria-valuemin="0" aria-valuemax="{{$project->maxfund}}" style="width: {{$project->currentfund/($project->maxfund)*100}}%;">
+>>>>>>> Stashed changes
         </div> ${{$project->currentfund}}
       </div>
       @endif
@@ -99,10 +116,16 @@
 	<ul class="nav nav-tabs">
     	<li class="active"><a data-toggle="tab" href="#home">Comments</a></li>
     	<li><a data-toggle="tab" href="#menu1">Updates</a></li>
+<<<<<<< Updated upstream
 {{--     	<li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
     	<li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
  --}}  	
   </ul>
+=======
+    	{{-- <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+    	<li><a data-toggle="tab" href="#menu3">Menu 3</a></li> --}}
+  	</ul>
+>>>>>>> Stashed changes
 	<!--bootstrap nav tabs -->
 
 	<div class="tab-content">
@@ -111,7 +134,11 @@
 <div class="detailBox">
     <div class="actionBox">
         <ul class="commentList">
+<<<<<<< Updated upstream
 {{--             <li>
+=======
+            {{-- <li>
+>>>>>>> Stashed changes
                 <div class="commenterImage">
                   <img src="http://placekitten.com/45/45" />
                 </div>
@@ -156,7 +183,11 @@
                 </div>
             </li>
           @endforeach
+<<<<<<< Updated upstream
 {{--             <li>
+=======
+            {{-- <li>
+>>>>>>> Stashed changes
                 <div class="commenterImage">
                   <img src="http://placekitten.com/45/45" />
                 </div>
@@ -186,14 +217,23 @@
         <h3>Updates</h3>
         <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </div>
+<<<<<<< Updated upstream
 {{--     <div id="menu2" class="tab-pane fade">
+=======
+    {{-- <div id="menu2" class="tab-pane fade">
+>>>>>>> Stashed changes
         <h3>Menu 2</h3>
         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
     </div>
     <div id="menu3" class="tab-pane fade">
         <h3>Menu 3</h3>
         <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+<<<<<<< Updated upstream
     </div>
  --}}  </div>
+=======
+    </div> --}}
+  </div>
+>>>>>>> Stashed changes
 
 @stop

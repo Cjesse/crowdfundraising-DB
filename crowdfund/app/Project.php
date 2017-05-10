@@ -34,10 +34,17 @@ class Project extends Model
     {
         return $this->belongsToMany('App\Tag');
     }
+<<<<<<< Updated upstream
 
+=======
+    
+>>>>>>> Stashed changes
     public function rate()
     {
         return $this->hasMany('App\Rate');
     }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 }

@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Input;
 use App\Project;
 use App\Tag;
 use Session;
@@ -26,7 +28,7 @@ class ProjectController extends Controller
         Session::flash('success', 'The project was successfully searched!');
         $search = \Request::get('search');
         // create a variable and store all the projects info in it from the database
-        $projects = Project::where('pname', 'like', '%'.$search.'%')->orWhere('category', 'like', '%'.$search.'%')->paginate(3);
+        $projects = Project::where('pname', 'like', '%'.$search.'%')->orWhere('category', 'like', '%'.$search.'%')->paginate(4);
         // return a view and pass in the above variable
         return view('projects.index', compact('projects'));
     }
@@ -64,10 +66,16 @@ class ProjectController extends Controller
         $project = new Project;
         $project->pname = $request->pname;
         $project->description = Purifier::clean($request->description);
+<<<<<<< Updated upstream
         $project->sample = $request->sample;
+=======
+        $file = Input::file('sample')->getRealPath();
+        $img = Image::make($file);
+        Response::make($img->encode('jpeg'));
+        // $project->sample = $request->sample;
+        $project->sample = $img;
+>>>>>>> Stashed changes
         $project->category = $request->category;
-        // $project->startdate = date('Y-m-d H:i:s');
-        // $project->updatetime = date('Y-m-d H:i:s');
         $project->enddate = $request->enddate . ' 00:00:00';
         $project->deadline = date('Y-m-d',strtotime($request->deadline)) . ' 00:00:00';
         $project->minfund = $request->minfund;
@@ -121,7 +129,11 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         $project = Project::find($id);
+<<<<<<< Updated upstream
         // $project->description = Purifier::clean($request->input('description'));
+=======
+       // $project->description = Purifier::clean($request->input('description'));
+>>>>>>> Stashed changes
         $project->pname = $request->pname;
         $project->description = Purifier::clean($request->description);
         $project->save();
