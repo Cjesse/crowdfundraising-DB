@@ -40,6 +40,33 @@ class PledgeController extends Controller
         }
         return view('pledges.mycreate')->withProject($project)->with('CCNs',$numbers);
     }
+
+    public function mystore(Request $request,$pid)
+    {
+        //validate data
+        $this->validate($request, array(
+            'amount' => 'required|min:0',
+            'CCN' => '',
+            ));
+        //store to DB
+        $pledge = new Pledge;
+        $project = Project::find($request->pid);
+        $pledge->amount = $request->amount;
+        $pledge->CCN = $request->CCN;
+        $pledge->charged = 0;
+        $pledge->user()->associate(Auth::user());
+        $pledge->project()->associate($project);
+        $pledge->save();
+        $project->currentfund += $request->amount;
+        if($project->currentfund>=$project->minfund){
+            $project->issuccess = 1;
+        }
+        
+        $project->save();
+        //redirect
+        Session::flash('success','You have pledged the project!');
+        return redirect()->route('project.show',$project->pid);
+    }
     /**
      * Store a newly created resource in storage.
      *

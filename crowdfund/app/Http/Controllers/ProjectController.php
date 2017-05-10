@@ -112,7 +112,7 @@ class ProjectController extends Controller
         foreach ($tags as $tag) {
             $tags2[$tag->id] = $tag->content;
         }
-        return view('projects.edit')->withProject($project)->withTags($tags2);
+        return view('projects.edit')->withProject($project)->withTags($tags);
     }
     /**
      * Update the specified resource in storage.

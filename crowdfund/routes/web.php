@@ -51,8 +51,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::delete('follow/{user_uid}/unfollow', ['uses' => 'FollowController@destroy', 'as' => 'follow.destroy']);
 
 	//Pledge
-	Route::resource('pledge','PledgeController',['except' => 'create']);
+	Route::resource('pledge','PledgeController',['except' => ['create','update']]);
 	Route::get('pledge/project/{pid}',['uses'=>'PledgeController@mycreate','as'=>'pledge.mycreate']);
+	Route::post('pledge/project/{pid}',['uses'=>'PledgeController@mystore','as'=>'pledge.mystore']);
 
 	//tag
 	Route::resource('tag','TagController',['except'=>'create']);
